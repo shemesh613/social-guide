@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>הדרכה חברתית פרטנית — שמשון ג'יקוב</title>
+    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Heebo', sans-serif;
+            color: #2d3436;
+            line-height: 1.7;
+            background: #f8fafe;
+        }
+
+        /* Hero */
+        .hero {
+            background: linear-gradient(135deg, #1a2a3a 0%, #2c3e50 40%, #3498db 100%);
+            color: white;
+            padding: 60px 20px 80px;
+            text-align: center;
+            position: relative;
+        }
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: -40px;
+            left: 0;
+            right: 0;
+            height: 80px;
+            background: #f8fafe;
+            border-radius: 50% 50% 0 0;
+        }
+        .hero h1 {
+            font-size: 38px;
+            font-weight: 900;
+            margin-bottom: 8px;
+        }
+        .hero .subtitle {
+            font-size: 20px;
+            font-weight: 300;
+            opacity: 0.9;
+            margin-bottom: 20px;
+        }
+        .hero .badge {
+            display: inline-block;
+            background: rgba(255,255,255,0.15);
+            border: 1px solid rgba(255,255,255,0.3);
+            border-radius: 30px;
+            padding: 8px 24px;
+            font-size: 14px;
+            backdrop-filter: blur(10px);
+        }
+
+        /* Container */
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* About Section */
+        .about-section {
+            padding: 60px 0 40px;
+        }
+        .about-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+        }
+        .about-card {
+            background: white;
+            border-radius: 12px;
+            padding: 16px 20px;
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.04);
+            border-right: 4px solid #3498db;
+        }
+        .about-card .icon { font-size: 28px; }
+        .about-card .text { font-size: 14px; font-weight: 500; color: #555; }
+
+        /* Section Title */
+        .section-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        .section-header h2 {
+            font-size: 32px;
+            font-weight: 800;
+            color: #2c3e50;
+            margin-bottom: 8px;
+        }
+        .section-header p {
+            font-size: 16px;
+            color: #777;
+        }
+        .section-header .underline {
+            width: 60px;
+            height: 4px;
+            background: linear-gradient(to right, #3498db, #2ecc71);
+            border-radius: 2px;
+            margin: 12px auto 0;
+        }
+
+        /* Skills Section */
+        .skills-section {
+            padding: 40px 0 60px;
+        }
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+        .skill-card {
+            background: white;
+            border-radius: 16px;
+            padding: 28px 22px;
+            text-align: center;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+            transition: transform 0.3s, box-shadow 0.3s;
+            border-top: 4px solid var(--accent);
+        }
+        .skill-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 8px 30px rgba(0,0,0,0.1);
+        }
+        .skill-card .emoji {
+            font-size: 44px;
+            margin-bottom: 12px;
+            display: block;
+        }
+        .skill-card h3 {
+            font-size: 18px;
+            font-weight: 700;
+            color: #2c3e50;
+            margin-bottom: 10px;
+        }
+        .skill-card p {
+            font-size: 13.5px;
+            color: #666;
+            line-height: 1.8;
+        }
+
+        /* Color accents */
+        .skill-card:nth-child(1) { --accent: #e74c3c; }
+        .skill-card:nth-child(2) { --accent: #f39c12; }
+        .skill-card:nth-child(3) { --accent: #e67e22; }
+        .skill-card:nth-child(4) { --accent: #e74c3c; }
+        .skill-card:nth-child(5) { --accent: #3498db; }
+        .skill-card:nth-child(6) { --accent: #9b59b6; }
+        .skill-card:nth-child(7) { --accent: #2ecc71; }
+        .skill-card:nth-child(8) { --accent: #1abc9c; }
+        .skill-card:nth-child(9) { --accent: #d35400; }
+
+        /* Pricing Section */
+        .pricing-section {
+            padding: 60px 0;
+            background: white;
+        }
+        .pricing-cards {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        .pricing-card {
+            border: 2px solid #e8e8e8;
+            border-radius: 16px;
+            padding: 30px;
+            text-align: center;
+            transition: all 0.3s;
+        }
+        .pricing-card.featured {
+            border-color: #3498db;
+            background: linear-gradient(135deg, #ebf5fb 0%, #fef9e7 100%);
+            transform: scale(1.03);
+            box-shadow: 0 8px 30px rgba(52,152,219,0.15);
+        }
+        .pricing-card .label {
+            font-size: 14px;
+            font-weight: 600;
+            color: #777;
+            margin-bottom: 8px;
+        }
+        .pricing-card .price {
+            font-size: 42px;
+            font-weight: 900;
+            color: #2c3e50;
+        }
+        .pricing-card .price small {
+            font-size: 16px;
+            font-weight: 400;
+            color: #999;
+        }
+        .pricing-card .per {
+            font-size: 13px;
+            color: #999;
+            margin-bottom: 16px;
+        }
+        .pricing-card .details {
+            font-size: 13px;
+            color: #666;
+            list-style: none;
+        }
+        .pricing-card .details li {
+            padding: 6px 0;
+            border-bottom: 1px solid #f0f0f0;
+        }
+        .pricing-card .details li:last-child { border-bottom: none; }
+        .pricing-badge {
+            background: #27ae60;
+            color: white;
+            padding: 4px 14px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 700;
+            display: inline-block;
+            margin-bottom: 12px;
+        }
+
+        /* Includes */
+        .includes-section {
+            padding: 50px 0;
+        }
+        .includes-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 16px;
+        }
+        .include-item {
+            background: white;
+            border-radius: 12px;
+            padding: 20px;
+            text-align: center;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.04);
+        }
+        .include-item .check { color: #27ae60; font-size: 28px; margin-bottom: 8px; }
+        .include-item p { font-size: 13px; color: #555; font-weight: 500; }
+
+        /* CTA */
+        .cta-section {
+            padding: 60px 20px;
+            background: linear-gradient(135deg, #2c3e50 0%, #3498db 100%);
+            text-align: center;
+            color: white;
+        }
+        .cta-section h2 {
+            font-size: 30px;
+            font-weight: 800;
+            margin-bottom: 10px;
+        }
+        .cta-section p {
+            font-size: 16px;
+            opacity: 0.9;
+            margin-bottom: 24px;
+        }
+        .cta-btn {
+            display: inline-block;
+            background: #27ae60;
+            color: white;
+            text-decoration: none;
+            padding: 16px 50px;
+            border-radius: 50px;
+            font-size: 20px;
+            font-weight: 700;
+            box-shadow: 0 6px 20px rgba(39,174,96,0.4);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .cta-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 30px rgba(39,174,96,0.5);
+        }
+
+        /* Footer */
+        .footer {
+            background: #1a2a3a;
+            color: white;
+            padding: 30px 20px;
+            text-align: center;
+        }
+        .footer .name { font-size: 18px; font-weight: 700; margin-bottom: 4px; }
+        .footer p { font-size: 14px; opacity: 0.7; }
+
+        /* Mobile */
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 28px; }
+            .hero .subtitle { font-size: 16px; }
+            .about-grid { grid-template-columns: 1fr; }
+            .skills-grid { grid-template-columns: 1fr; }
+            .pricing-cards { grid-template-columns: 1fr; }
+            .includes-grid { grid-template-columns: 1fr; }
+            .skill-card { padding: 22px 18px; }
+        }
+        @media (max-width: 480px) {
+            .hero { padding: 40px 16px 60px; }
+            .hero h1 { font-size: 24px; }
+            .section-header h2 { font-size: 24px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Hero -->
+    <section class="hero">
+        <h1>🧩 הכיתה החברתית שלנו</h1>
+        <p class="subtitle">הדרכה חברתית פרטנית — אחד על אחד</p>
+        <span class="badge">שמשון ג'יקוב — מדריך חברתי</span>
+    </section>
+
+    <!-- About -->
+    <section class="about-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>אודות המדריך</h2>
+                <div class="underline"></div>
+            </div>
+            <div class="about-grid">
+                <div class="about-card">
+                    <span class="icon">🎓</span>
+                    <span class="text">בוגר לימודי הנחיה חברתית — מאיה כהן סקאלי, מכללת ירושלים</span>
+                </div>
+                <div class="about-card">
+                    <span class="icon">👨‍👩‍👧‍👦</span>
+                    <span class="text">בוגר 2 הדרכות הורים — מיכל ברנהם, מדריכת הורים</span>
+                </div>
+                <div class="about-card">
+                    <span class="icon">📚</span>
+                    <span class="text">מחנך ורב כיתה בעל ניסיון חינוכי של 10+ שנים</span>
+                </div>
+                <div class="about-card">
+                    <span class="icon">🏆</span>
+                    <span class="text">זוכה חידון התנ"ך העולמי למבוגרים תשפ"ה</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills -->
+    <section class="skills-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>הכפתורים החברתיים</h2>
+                <p>כל המיומנויות שנלמדות בהדרכה הפרטנית</p>
+                <div class="underline"></div>
+            </div>
+            <div class="skills-grid">
+
+                <!-- שיתוף -->
+                <div class="skill-card">
+                    <span class="emoji">🤝</span>
+                    <h3>שיתוף</h3>
+                    <p>ככל שאני משתף את החבר בסיפורים על עצמי — חוויות, מחשבות, דברים מעצמי — זה מחבר בינינו. כשהקשר מתגבר, גם דברים עמוקים יותר נכנסים לתמונה.</p>
+                </div>
+
+                <!-- שפת גוף -->
+                <div class="skill-card">
+                    <span class="emoji">😊</span>
+                    <h3>שפת גוף</h3>
+                    <p>החיצוניות שלנו מדברת: חיוך, טון דיבור מתאים — לא מדי שקט ולא מדי בקול, לבוש נקי וריח טוב. כל אלה שולחים מסר חברתי עוד לפני שאמרנו מילה.</p>
+                </div>
+
+                <!-- מחמאות -->
+                <div class="skill-card">
+                    <span class="emoji">⭐</span>
+                    <h3>מחמאות</h3>
+                    <p>לתת מחמאות אמיתיות ונקודתיות — לא סתם "יפה", אלא משהו ספציפי שבאמת מרגישים. מחמאות כאלה מחברות חברים ובונות אמון.</p>
+                </div>
+
+                <!-- רגשות -->
+                <div class="skill-card">
+                    <span class="emoji">❤️</span>
+                    <h3>רגשות</h3>
+                    <p>קודם כל לקבל את הרגשות שלנו, לא לדחות אותם. לימוד מעמיק להצליח לפגוש את הרגע שלנו בלי לברוח ממנו — גם ההורים צריכים לפתח את זה בבית.</p>
+                </div>
+
+                <!-- דולפין -->
+                <div class="skill-card">
+                    <span class="emoji">🐬</span>
+                    <h3>מודל הדולפין</h3>
+                    <p>יש את הכריש שתוקף ישר, ואת הסרדין שבורח. הדולפין צולל פנימה, בודק מה הוא מרגיש, ואז מזנק החוצה — מבקש בצורה נעימה ואסרטיבית להפסיק את ההתנהגות הפוגענית.</p>
+                </div>
+
+                <!-- יוזמה -->
+                <div class="skill-card">
+                    <span class="emoji">🚀</span>
+                    <h3>יוזמה</h3>
+                    <p>לא מחכים שחברים יפנו אלינו — יוזמים פעולות, מציעים משחק, פונים ראשונים. היכולת ליזום היא מפתח מרכזי בבניית חברויות.</p>
+                </div>
+
+                <!-- הצטרפות לקבוצה -->
+                <div class="skill-card">
+                    <span class="emoji">👥</span>
+                    <h3>הצטרפות לקבוצה</h3>
+                    <p>איך מצטרפים לקבוצה בצורה מתאימה? לומדים לקרוא את המצב, לגשת בזמן הנכון, ולהיכנס בצורה טבעית שלא מפריעה לדינמיקה הקבוצתית.</p>
+                </div>
+
+                <!-- מילות קסם -->
+                <div class="skill-card">
+                    <span class="emoji">✨</span>
+                    <h3>מילות קסם</h3>
+                    <p>המילים שפותחות דלתות: "בבקשה", "תודה", "סליחה", "אפשר?" — מילים פשוטות שמשנות את כל האינטראקציה החברתית ויוצרות כבוד הדדי.</p>
+                </div>
+
+                <!-- אפר"ת -->
+                <div class="skill-card">
+                    <span class="emoji">🔄</span>
+                    <h3>מודל אפר"ת</h3>
+                    <p><strong>א</strong>ירוע → <strong>פ</strong>ירוש → <strong>ר</strong>גש → <strong>ת</strong>גובה. מודל שמלמד לזהות את התהליך הפנימי: מה קרה, איך פירשתי, מה הרגשתי, ואיך אני בוחר להגיב — במקום להגיב אוטומטית.</p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing -->
+    <section class="pricing-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>מחירון</h2>
+                <p>השקעה בעתיד החברתי של ילדכם</p>
+                <div class="underline"></div>
+            </div>
+            <div class="pricing-cards">
+                <div class="pricing-card">
+                    <div class="label">פגישה בודדת</div>
+                    <div class="price">₪170</div>
+                    <div class="per">למפגש</div>
+                    <ul class="details">
+                        <li>מפגש אישי אחד על אחד</li>
+                        <li>ליווי הורים לאחר הפגישה</li>
+                        <li>שיתוף תכנים וכלים</li>
+                    </ul>
+                </div>
+                <div class="pricing-card featured">
+                    <div class="pricing-badge">חיסכון!</div>
+                    <div class="label">חבילת 4 מפגשים</div>
+                    <div class="price">₪590</div>
+                    <div class="per">₪147.5 למפגש · תשלום מראש</div>
+                    <ul class="details">
+                        <li>4 מפגשים אישיים</li>
+                        <li>ליווי הורים שוטף</li>
+                        <li>שיתוף תכנים וכלים</li>
+                        <li>מעקב התקדמות</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Includes -->
+    <section class="includes-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>כלול בכל מפגש</h2>
+                <div class="underline"></div>
+            </div>
+            <div class="includes-grid">
+                <div class="include-item">
+                    <div class="check">✓</div>
+                    <p>מפגש אישי אחד על אחד עם הילד/ה</p>
+                </div>
+                <div class="include-item">
+                    <div class="check">✓</div>
+                    <p>ליווי ושיחה עם ההורים</p>
+                </div>
+                <div class="include-item">
+                    <div class="check">✓</div>
+                    <p>שיתוף תכנים וכלים מעשיים</p>
+                </div>
+                <div class="include-item">
+                    <div class="check">✓</div>
+                    <p>התאמה אישית לצרכי הילד/ה</p>
+                </div>
+                <div class="include-item">
+                    <div class="check">✓</div>
+                    <p>תרגול מודלים חברתיים מוכחים</p>
+                </div>
+                <div class="include-item">
+                    <div class="check">✓</div>
+                    <p>מעקב התקדמות</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta-section">
+        <h2>מוכנים להתחיל?</h2>
+        <p>צרו קשר עוד היום ונתאים תוכנית אישית לילד/ה שלכם</p>
+        <a href="https://wa.me/972526953500?text=שלום,%20אשמח%20לשמוע%20פרטים%20על%20הדרכה%20חברתית" class="cta-btn">📲 ליצירת קשר בוואטסאפ</a>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p class="name">שמשון ג'יקוב — מדריך חברתי</p>
+        <p>📞 052-695-3500</p>
+    </footer>
+
+</body>
+</html>
